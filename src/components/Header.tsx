@@ -23,7 +23,7 @@ const Header = () => {
               <a href="https://www.linkedin.com/in/leonelmezatio/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://github.com/lamezati" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
+              <a href="https://github.com/lamezati-sudo" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
                 <Github className="w-5 h-5" />
               </a>
             </div>

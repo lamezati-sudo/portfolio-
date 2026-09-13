@@ -25,7 +25,7 @@ const ContactInfo = () => {
       <div className="flex items-center gap-3">
         <Github className="w-5 h-5 text-blue-600" />
         <a 
-          href="https://github.com/lamezati" 
+          href="https://github.com/lamezati-sudo" 
           target="_blank" 
           rel="noopener noreferrer"
           className="text-gray-600 hover:text-blue-600"

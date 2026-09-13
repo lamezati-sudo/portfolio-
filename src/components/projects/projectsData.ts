@@ -12,7 +12,7 @@ export const personalProjects: Project[] = [
     title: "Portfolio Website",
     description: "A professional portfolio showcasing my academic and professional achievements with a focus on cybersecurity.",
     technologies: ["React", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com/lamezati"
+    githubUrl: "https://github.com/lamezati-sudo"
   }
 ];
 
