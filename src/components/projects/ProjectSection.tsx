@@ -1,7 +1,5 @@
-import React from 'react';
 import ProjectCard from './ProjectCard';
-import { Project } from './projectsData';
-import { AlertTriangle } from 'lucide-react';
+import type { Project } from './projectsData';
 
 interface ProjectSectionProps {
   title: string;
@@ -9,23 +7,13 @@ interface ProjectSectionProps {
   message?: string;
 }
 
-const ProjectSection: React.FC<ProjectSectionProps> = ({ title, projects, message }) => {
-  return (
-    <div className="py-12">
-      <h2 className="text-3xl font-bold text-center mb-6">{title}</h2>
-      {message && (
-        <div className="max-w-4xl mx-auto mb-8 p-4 bg-blue-50 text-blue-700 rounded-lg flex items-center justify-center gap-2">
-          <AlertTriangle className="w-5 h-5 flex-shrink-0" />
-          <p className="text-center">{message}</p>
-        </div>
-      )}
-      <div className="max-w-4xl mx-auto grid gap-8">
-        {projects.map((project, index) => (
-          <ProjectCard key={index} {...project} />
-        ))}
-      </div>
+const ProjectSection = ({ title, projects, message }: ProjectSectionProps) => (
+  <div className="additional-projects">
+    <h3 className="eyebrow">{title}</h3>
+    <div className="additional-projects-grid">
+      {projects.map(project => <ProjectCard key={project.id} {...project} />)}
     </div>
-  );
-};
-
+    {message && <p className="project-access-note">{message} <a href="#contact">Get in touch <span aria-hidden="true">↗</span></a></p>}
+  </div>
+);
 export default ProjectSection;

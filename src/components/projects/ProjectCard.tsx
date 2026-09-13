@@ -1,59 +1,45 @@
-import React from 'react';
-import { Github, ExternalLink } from 'lucide-react';
-import { Project } from './projectsData';
+import { ArrowUpRight, Check, Github } from 'lucide-react';
+import type { Project } from './projectsData';
+import CadGallery from './CadGallery';
 
-const ProjectCard: React.FC<Project> = ({ 
-  title, 
-  description, 
-  technologies, 
-  githubUrl, 
-  requestAccess 
-}) => {
-  const scrollToContact = (e: React.MouseEvent) => {
-    e.preventDefault();
-    const contactSection = document.getElementById('contact');
-    contactSection?.scrollIntoView({ behavior: 'smooth' });
-  };
-
+const ProjectCard = ({ id, number, title, category, period, description, detail, impact, technologies, imageUrl, imageAlt, githubUrl, externalUrl, linkLabel, requestAccess }: Project) => {
+  const compact = !imageUrl;
+  const href = requestAccess ? '#contact' : (externalUrl || githubUrl);
   return (
-    <div className="bg-gray-50 rounded-lg p-6 shadow-md">
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-semibold">{title}</h3>
-        <div className="flex gap-2">
-          {githubUrl && (
-            <a 
-              href={githubUrl} 
-              className="text-gray-600 hover:text-blue-600" 
-              target="_blank" 
-              rel="noopener noreferrer"
-            >
-              <Github className="w-5 h-5" />
-            </a>
-          )}
+    <article id={`project-${id}`} className={`project-card ${compact ? 'project-card--compact' : ''} project-card--${id}`}>
+      {imageUrl && (
+        <div className={`project-visual project-visual--${id}`}>
+          <div className="project-visual-top mono">
+            {id === 'hooly' ? <span className="hooly-brand"><img src={`${import.meta.env.BASE_URL}images/hooly-icon.png`} alt="" width="26" height="26" /> HOOLY AI</span> : <span>REFERENCE → PARAMETRIC MODEL</span>}
+            <span>{id === 'hooly' ? 'ANDROID' : 'EXPERIMENT / 001'}</span>
+          </div>
+          {id === 'cad' ? <CadGallery /> : <div className="project-image-wrap">
+            <img className="project-image" src={imageUrl} alt={imageAlt} loading="lazy" decoding="async" width={id === 'hooly' ? 811 : 800} height={id === 'hooly' ? 1440 : 427} />
+          </div>}
+          {id === 'cad' ? (
+            <div className="cad-workflow">
+              <p className="mono">REFERENCE + MY CAD DESIGNS / 5 IMAGES</p>
+              <div><span>Reference</span><span aria-hidden="true">→</span><span>Parametric part</span><span aria-hidden="true">→</span><span><Check size={13} /> Review</span></div>
+            </div>
+          ) : <span className="project-image-note mono">OFFICIAL GOOGLE PLAY PREVIEW</span>}
         </div>
-      </div>
-      <p className="text-gray-600 mb-4">{description}</p>
-      <div className="flex flex-wrap gap-2 mb-4">
-        {technologies.map((tech, i) => (
-          <span
-            key={i}
-            className="inline-block bg-blue-100 text-blue-600 px-2 py-1 rounded text-sm"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-      {requestAccess && (
-        <button
-          onClick={scrollToContact}
-          className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium"
-        >
-          <ExternalLink className="w-4 h-4" />
-          Request Access
-        </button>
       )}
-    </div>
+      <div className="project-content">
+        <div className="project-meta mono"><span>{number} / {category}</span><span>{period}</span></div>
+        <h3>{title}</h3>
+        <p className="project-description">{description}</p>
+        {detail && <p className="project-detail">{detail}</p>}
+        {impact && <p className="project-impact"><span aria-hidden="true">↳</span> {impact}</p>}
+        <ul className="technology-list" aria-label={`Technologies used in ${title}`}>
+          {technologies.map(tech => <li key={tech}>{tech}</li>)}
+        </ul>
+        {href && (
+          <a href={href} className="text-link project-link" {...(!requestAccess ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+            {githubUrl && <Github size={16} />}{linkLabel || 'View project'}<ArrowUpRight size={17} />
+          </a>
+        )}
+      </div>
+    </article>
   );
 };
-
 export default ProjectCard;

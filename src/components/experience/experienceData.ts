@@ -1,24 +1,28 @@
 export const experiences = [
   {
-    title: "Information Technology Intern",
-    company: "NC State",
-    period: "Aug 18, 2024 - Present",
-    location: "Raleigh",
+    title: 'IT Support Intern',
+    company: 'NC State University',
+    department: 'College of Sciences',
+    period: 'Sept 2024 — Present',
+    location: 'Raleigh, NC',
     logoUrl: `${import.meta.env.BASE_URL}ncstate-logo.png`,
     description: [
-      "Managing and resolving technical issues using the Service Now Ticketing system, including support for classroom, labs, and conference rooms",
-      "Conducting initial assessments of technical problems using checklists and knowledge base, escalating non-simple issues to specialized teams"
-    ]
+      'Support 500+ faculty, staff, and students with hardware, software, network, and account issues across the College of Sciences.',
+      'Install and troubleshoot computers and peripherals, maintain system updates, and explain technical solutions in clear, practical terms.',
+    ],
+    tags: ['IT support', 'ServiceNow', 'Systems & networking'],
   },
   {
-    title: "AI Training - Advanced Coder",
-    company: "Outlier",
-    period: "November 2024 - Present",
-    location: "Remote",
+    title: 'AI Training — Advanced Coder',
+    company: 'Outlier.ai',
+    department: 'Generative AI',
+    period: 'Nov 2024 — July 2025',
+    location: 'Remote',
     logoUrl: `${import.meta.env.BASE_URL}outlier-logo.png`,
     description: [
-      "Collaborated with Outlier.ai to enhance generative artificial intelligence (AI) models by providing expert feedback and coding abilities",
-      "Communicated technical concepts clearly and effectively in English, ensuring high-quality outcomes in training AI models"
-    ]
-  }
+      'Reviewed code and evaluated model outputs to improve generative AI reasoning and code quality.',
+      'Delivered clear technical feedback and documentation grounded in programming expertise and coding best practices.',
+    ],
+    tags: ['Code review', 'Model evaluation', 'Technical feedback'],
+  },
 ];
