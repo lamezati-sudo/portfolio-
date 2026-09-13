@@ -3,7 +3,7 @@ import { FileText } from 'lucide-react';
 
 const Hero = () => {
   const openResume = () => {
-    window.open('/resume.pdf', '_blank');
+    window.open(`${import.meta.env.BASE_URL}resume.pdf`, '_blank');
   };
 
   return (
@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="max-w-3xl mx-auto text-center">
           <div className="md:hidden mb-8">
             <img
-              src="/profile.jpg"
+              src={`${import.meta.env.BASE_URL}profile.jpg`}
               alt="Leonel Mezatio"
               className="w-40 h-40 rounded-full mx-auto object-cover border-4 border-white shadow-lg"
             />
